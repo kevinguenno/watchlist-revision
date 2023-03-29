@@ -1,0 +1,10 @@
+<h3>Ajoutes une nouvelle liste</h3>
+<div>
+  <%= simple_form_for @list do |f|%>
+    <%= f.input :name %>
+    <%= f.submit "Ajouter la liste" %>
+  <% end %>
+</div>
+<div>
+  <%= link_to "Retour à l'accueil", lists_path %>
+</div>
