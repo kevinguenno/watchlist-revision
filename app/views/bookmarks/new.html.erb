@@ -1,0 +1,6 @@
+<h3>Ajoutes un film</h3>
+
+<%= simple_form_for @bookmark, url: new_list_bookmark_path(@bookmark, @list) do |f| %>
+  <%= f.association :movies %>
+  <%= f.button :submit %>
+<% end %>

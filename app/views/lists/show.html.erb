@@ -1,7 +1,23 @@
-<h3>Voici le détail de ta liste</h3>
+<h3><%= @list.name %></h3>
+<%= link_to "Modifier le nom de la liste", edit_list_path %>
+
+<% @bookmarks.each do |bookmark| %>
+  <div>
+    <%= bookmark.movie.title %>
+    <%= bookmark.movie.overview %>
+    <img src="<%= bookmark.movie.poster_url %>" alt="poster" style="width:400px; height:auto;">
+    <%= bookmark.movie.rating %>
+    <%= link_to "Supprimer", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Etes-vous sur?"} %>
+  </div>
+<% end %>
+
 
 <div>
-  <%= @list.name %>
+    <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.association :movie %>
+    <%= f.input :comment %>
+    <%= f.submit %>
+  <% end %>
 </div>
 
 <div>
